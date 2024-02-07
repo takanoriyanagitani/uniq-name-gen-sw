@@ -12,11 +12,11 @@ on:
 jobs:
   build:
 
-    runs-on: macos-latest
+    runs-on: macos-14
 
     steps:
     - uses: actions/checkout@v3
     - name: Build
-      run: swift build -v
+      run: swift build -v --jobs 3
     - name: Run tests
       run: swift test -v
