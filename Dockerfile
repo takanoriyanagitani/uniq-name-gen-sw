@@ -17,6 +17,7 @@ COPY ./Examples/Sources/      ./Sources/
 RUN swift \
     build \
     --configuration "${typ}" \
+    -Xswiftc -cross-module-optimization \
     -Xlinker --stack-first \
     --triple wasm32-unknown-wasi \
     --jobs "${ncpu}"
