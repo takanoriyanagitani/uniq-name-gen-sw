@@ -19,10 +19,6 @@ extension NameDateSource {
     }
 }
 
-public func printHelo(){
-    print("helo")
-}
-
 public func date2hour(d: Date, c: Calendar) -> Int {
     c.component(.hour, from: d)
 }

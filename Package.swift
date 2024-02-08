@@ -16,6 +16,10 @@ let package = Package(
         .target(
             name: "UniqNameGenDbFriendly",
             path: "Sources"
+        ),
+        .testTarget(
+            name: "UniqNameGenDbFriendlyTests",
+            dependencies: ["UniqNameGenDbFriendly"]
         )
     ]
 )

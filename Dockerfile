@@ -1,14 +1,18 @@
 FROM ghcr.io/swiftwasm/swift:5.9-jammy AS builder
 WORKDIR /app.d
-#COPY ./helo.swift ./
-#RUN swiftc -target wasm32-unknown-wasi helo.swift -o helo.wasm
 COPY ./Package.swift ./
 COPY ./Sources/ ./Sources/
 ARG ncpu=11
 ARG typ=release
+COPY ./Tests/ ./Tests/
 RUN swift \
     build \
+    -v \
     --configuration "${typ}" \
+    --jobs "${ncpu}"
+RUN swift \
+    test \
+    -v \
     --jobs "${ncpu}"
 
 WORKDIR /app.d/Examples
