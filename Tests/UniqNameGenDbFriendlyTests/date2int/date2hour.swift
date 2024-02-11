@@ -30,4 +30,12 @@ final class TestHour: XCTestCase {
         XCTAssertEqual(15, i)
     }
 
+    func test_2006_tokyo(){
+        let d: Date = ISO8601DateFormatter().date(from: "2006-01-02T15:04:05Z")!
+        var c: Calendar = Calendar.current
+        c.timeZone = TimeZone(secondsFromGMT: 3600*9)!
+        let i: Int = UniqNameGenDbFriendly.date2hour(d: d, c: c)
+        XCTAssertEqual(0, i)
+    }
+
 }
